@@ -1,0 +1,54 @@
+# http://www.anotherchris.net/posts/net-core-continous-integration-gitlab-docker-kubernetes
+# https://jira.dasgip.de/browse/VNCL-130
+stages:
+  - test-compile
+  - build
+
+
+variables:
+  DOCKER_DRIVER: overlay2
+  REGISTRY: vnregistry.azurecr.io
+  RUSER: vnregistry
+  RPW: G3QFAMYV4E=60KbQg36pSbLNAnn3K/mN
+  CONTAINER_INIT_IMAGE: StatusDataPushService
+  CONTAINER_IMAGE: vnregistry.azurecr.io/StatusDataPushService #${REGISTRY_GROUP_PROJECT}/${CI_PROJECT_NAME}:${CI_BUILD_REF_NAME}_${CI_BUILD_REF}
+
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF_NAME"
+
+test-compile:
+  stage: test-compile
+  image : microsoft/dotnet:latest
+  tags: 
+    - vncloud-devops-docker
+  script:
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
+    - echo "check static code - linter"
+    - dotnet test ./Eppendorf.VNCloud.StatusDataPushService.Test
+    - echo "restore nuget"
+    - dotnet restore
+    - dotnet build ./Eppendorf.VNCloud.StatusDataPushService -c Release
+  only:
+    - /^feature\/*/
+    - /^VNCL\/*/
+    - master
+
+build-image:
+  stage: build
+  services:
+    - docker:dind
+  image: docker:stable
+  tags: 
+   - vncloud-devops-docker
+  script:
+    - export GIT_SHORTHASH=$(echo "$CI_BUILD_REF" | cut -c 1-8)
+    - docker login $REGISTRY -u $RUSER -p $RPW
+    - docker build -t $CONTAINER_INIT_IMAGE:$GIT_SHORTHASH .
+    - docker tag $CONTAINER_INIT_IMAGE:$GIT_SHORTHASH $CONTAINER_IMAGE:latest
+    - docker push $CONTAINER_IMAGE:latest
+  only:
+    - /^feature\/*/
+    - /^VNCL\/*/
+    - master

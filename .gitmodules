@@ -1,0 +1,4 @@
+[submodule "lint"]
+	path = lint
+	url = ../../VisioNize_Cloud/dotnet-linter-rules.git
+	branch = master
