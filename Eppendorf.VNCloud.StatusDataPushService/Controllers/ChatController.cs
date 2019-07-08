@@ -1,4 +1,4 @@
-﻿// <copyright file="ValuesController.cs" company="Eppendorf AG - 2018">
+﻿// <copyright file="ChatController.cs" company="Eppendorf AG - 2018">
 // Copyright (c) Eppendorf AG - 2018. All rights reserved.
 // </copyright>
 
@@ -8,9 +8,9 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Controllers
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/{version:apiVersion}/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ChatController : ControllerBase
     {
         // GET api/values
         [HttpGet]

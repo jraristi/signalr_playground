@@ -2,23 +2,22 @@
 // Copyright (c) Eppendorf AG - 2018. All rights reserved.
 // </copyright>
 
+using System.Linq;
+using System.Threading.Tasks;
+using Eppendorf.VNCloud.StatusDataPushService.Hubs;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace Eppendorf.VNCloud.StatusDataPushService
 {
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Diagnostics.HealthChecks;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -38,6 +37,10 @@ namespace Eppendorf.VNCloud.StatusDataPushService
                     o.AssumeDefaultVersionWhenUnspecified = true;
                     o.DefaultApiVersion = new ApiVersion(1, 0);
                 });
+
+            var connectionString = Configuration["SignalR.ConnectionString"];
+
+            services.AddSignalR().AddAzureSignalR(connectionString);
             services.AddHealthChecks();
         }
 
@@ -61,11 +64,15 @@ namespace Eppendorf.VNCloud.StatusDataPushService
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseFileServer();
+            app.UseAzureSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chat");
+            });
         }
 
-        private static Task WriteResponse(
-            HttpContext httpContext,
-            HealthReport result)
+        private static Task WriteResponse(HttpContext httpContext, HealthReport result)
         {
             httpContext.Response.ContentType = "application/json";
 
