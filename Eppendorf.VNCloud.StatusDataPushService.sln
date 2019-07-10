@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eppendorf.VNCloud.StatusDat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eppendorf.VNCloud.StatusDataPushService.Test", "Eppendorf.VNCloud.StatusDataPushService.Test\Eppendorf.VNCloud.StatusDataPushService.Test.csproj", "{43813DD7-FEFB-4F4D-BCA2-DA5BEE2556E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eppendorf.VNCloud.StatusDataPushService.Client", "Eppendorf.VNCloud.StatusDataPushService.Client\Eppendorf.VNCloud.StatusDataPushService.Client.csproj", "{908FF832-37E3-4258-B0A4-49519374441E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eppendorf.VNCloud.StatusDataPushService.Client", "Eppendorf.VNCloud.StatusDataPushService.Client\Eppendorf.VNCloud.StatusDataPushService.Client.csproj", "{1F8E101B-D216-476B-9CC5-EB83C5EEE977}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{43813DD7-FEFB-4F4D-BCA2-DA5BEE2556E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43813DD7-FEFB-4F4D-BCA2-DA5BEE2556E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43813DD7-FEFB-4F4D-BCA2-DA5BEE2556E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{908FF832-37E3-4258-B0A4-49519374441E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{908FF832-37E3-4258-B0A4-49519374441E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{908FF832-37E3-4258-B0A4-49519374441E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{908FF832-37E3-4258-B0A4-49519374441E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

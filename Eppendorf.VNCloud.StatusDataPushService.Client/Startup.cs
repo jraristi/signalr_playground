@@ -32,7 +32,9 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Client
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSignalR().AddAzureSignalR();
+
+            var connectionString = Configuration["SignalR.ConnectionString"];
+            services.AddSignalR().AddAzureSignalR(connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,14 +51,13 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Client
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseFileServer();
             app.UseAzureSignalR(routes =>
             {
-                routes.MapHub<Chat>("/chat");
+                routes.MapHub<ChatHub>("/chat");
             });
 
             app.UseMvc();

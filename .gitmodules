@@ -1,4 +1,0 @@
-[submodule "lint"]
-	path = lint
-	url = https://gitlab.dasgip.de/VisioNize_Cloud/csharp_libraries/dotnet-linter-rules
-	branch = master

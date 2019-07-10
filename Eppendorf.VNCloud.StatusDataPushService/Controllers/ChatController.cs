@@ -5,6 +5,7 @@
 namespace Eppendorf.VNCloud.StatusDataPushService.Controllers
 {
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1.0")]

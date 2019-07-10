@@ -139,7 +139,7 @@
                 modal.style = 'display: block;';
             }
 
-            var connection = new signalR.HubConnectionBuilder()
+            var connection = new signalR.HubConnectionBuilder('http://localhost:53766')
                                         .withUrl('/chat')
                                         .build();
             //If the connection is successful, that connection is passed to bindConnectionMessage, which adds event handlers for incoming content pushes to the client.

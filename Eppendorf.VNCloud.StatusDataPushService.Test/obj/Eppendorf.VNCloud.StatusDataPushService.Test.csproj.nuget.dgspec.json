@@ -1,0 +1,166 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService.Test\\Eppendorf.VNCloud.StatusDataPushService.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService.Test\\Eppendorf.VNCloud.StatusDataPushService.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService.Test\\Eppendorf.VNCloud.StatusDataPushService.Test.csproj",
+        "projectName": "Eppendorf.VNCloud.StatusDataPushService.Test",
+        "projectPath": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService.Test\\Eppendorf.VNCloud.StatusDataPushService.Test.csproj",
+        "packagesPath": "C:\\Users\\Aristizabal\\.nuget\\packages\\",
+        "outputPath": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Aristizabal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/eppendorf/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\Eppendorf.VNCloud.StatusDataPushService.csproj": {
+                "projectPath": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\Eppendorf.VNCloud.StatusDataPushService.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[15.9.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\Eppendorf.VNCloud.StatusDataPushService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\Eppendorf.VNCloud.StatusDataPushService.csproj",
+        "projectName": "Eppendorf.VNCloud.StatusDataPushService",
+        "projectPath": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\Eppendorf.VNCloud.StatusDataPushService.csproj",
+        "packagesPath": "C:\\Users\\Aristizabal\\.nuget\\packages\\",
+        "outputPath": "C:\\Code\\status-data-push-service\\Eppendorf.VNCloud.StatusDataPushService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Aristizabal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/eppendorf/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.Azure.SignalR": {
+              "target": "Package",
+              "version": "[1.0.10, )"
+            },
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.6.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

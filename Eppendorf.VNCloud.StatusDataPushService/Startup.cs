@@ -62,14 +62,15 @@ namespace Eppendorf.VNCloud.StatusDataPushService
                 ResponseWriter = WriteResponse
             });
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
-
+            var corsConfig = Configuration["CorsBuilderWithOrigins"];
+            app.UseCors(builder => builder.WithOrigins(corsConfig).AllowCredentials());
+            
             app.UseFileServer();
             app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chat");
             });
+            app.UseMvc();
         }
 
         private static Task WriteResponse(HttpContext httpContext, HealthReport result)
