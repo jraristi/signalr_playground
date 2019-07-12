@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "349c191721d7661c7ece881a55cc03a49ad0568e"
+    "signature": "a8c79ff713dd49951550df78fc4a43b6d2334aa9"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "Eppendorf.VNCloud.StatusDataPushService.Client/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNet.SignalR.Client": "2.4.1",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.Azure.SignalR": "1.0.10",
@@ -52,6 +53,20 @@
         },
         "compile": {
           "lib/netstandard2.0/MessagePack.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR.Client/2.4.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.19093"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNet.SignalR.Client.dll": {}
         }
       },
       "Microsoft.AspNetCore.Http.Connections.Client/1.0.0": {
@@ -3316,6 +3331,13 @@
       "sha512": "sha512-QSKZVq6BmNaz/B4n0bAM/moQnc4E6XZ7uXRbJcEXxUzZufJiDYDE6awYqDtNz6acupYoPt2QupGV4rpyPCRRtg==",
       "path": "messagepack/1.7.3.4",
       "hashPath": "messagepack.1.7.3.4.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.Client/2.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x5Bc1LkjBZV9GEjflBF0zsKgXbpFkTAArQMAdbhKKC1MopLaFPUYQZrCAPgGSAW8OudHGhyEfMZ5vJbdBu8IsA==",
+      "path": "microsoft.aspnet.signalr.client/2.4.1",
+      "hashPath": "microsoft.aspnet.signalr.client.2.4.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http.Connections.Client/1.0.0": {
       "type": "package",

@@ -21,6 +21,7 @@
         <div style="overflow: auto; border-style: ridge; border-top-style: hidden;">
             <button class="btn-warning pull-right" id="echo">Echo</button>
             <button class="btn-success pull-right" id="sendmessage">Send</button>
+            <button class="btn-success pull-right" id="subscribegroup">Subscribe</button>
         </div>
     </div>
     <div class="modal alert alert-danger fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -112,6 +113,19 @@
                     messageInput.focus();
                     event.preventDefault();
                 });
+
+                document.getElementById('subscribegroup').addEventListener('click', function (event) {
+                    // Call the subscribeGroup method on the hub.
+                    if (messageInput.value) {
+                        connection.send('subscribeToUnitsGroup', "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZTkzNzc5NzY1ZGY1MDgwMTIzNzNkM2ExNjVkNjEyIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NjI5MTUyOTEsImV4cCI6MTU2MjkxODg5MSwiaXNzIjoiaHR0cHM6Ly9hcGkuZGV2LnZpc2lvbml6ZS5jbG91ZCIsImF1ZCI6WyJodHRwczovL2FwaS5kZXYudmlzaW9uaXplLmNsb3VkL3Jlc291cmNlcyIsImRldmljZS1hdXRoZW50aWNhdGlvbiIsIm5vdGlmaWNhdGlvbi1zZXR0aW5ncyIsInVzZXItbWFuYWdlbWVudCJdLCJjbGllbnRfaWQiOiJ3b2xwZXJ0aW5nZXIiLCJzdWIiOiI0ZDY2YmM2Yy1lNDI0LTQyYzktYmYwNy0xMThhODhhYzYzZjYiLCJhdXRoX3RpbWUiOjE1NjI4MzYzNTQsImlkcCI6ImxvY2FsIiwiVGVuYW50SWQiOiJkYXNnaXAiLCJVc2VySWQiOiIzIiwiRnVsbE5hbWUiOiJKb2huIEFyaXN0aXphYmFsIiwiSXNBY3RpdmUiOiJUcnVlIiwiUm9sZSI6WyJVc2VyIiwiQWRtaW4iXSwic2NvcGUiOlsib3BlbmlkIiwiZGV2aWNlLWF1dGhlbnRpY2F0aW9uIiwibm90aWZpY2F0aW9uLXNldHRpbmdzIiwidXNlci1tYW5hZ2VtZW50Il0sImFtciI6WyJwd2QiXX0.bvFwISVRC6iq1ejTjnUJE6RzKZODvZ4twC8FHlqQ_OusM9_LAvXqT54FNoOl_cC1v5Oqtq90bnGCf00WBVfCcJ3FMlGm_fwLk_G7v-A02PcxzNNpPMU_k1Km6h7K_s1_ZjG_bWrLbjS_2Gi1TQv-bx8nC9w0h8hcWAEjLvxMyxVYbtf7s9EXCxlAtwysFgcNxAfWu45LzV3Pup626Y8SxlnrTEBNtbz-5YJQ-kkQ4eybfUBzb3JFrTF84CFxRTYS3X23PwVc169eRRVEQ_ZLvyNeXMHscmkkd0CaECja8jdQUZqy6iEi-Mvd8rYLjrKrPI6BJA8Xw0mM_FOI8WVEvw");
+                    }
+
+                    // Clear text box and reset focus for next comment.
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+
                 document.getElementById('message').addEventListener('keypress', function (event) {
                     if (event.keyCode === 13) {
                         event.preventDefault();
@@ -140,7 +154,7 @@
             }
 
             var connection = new signalR.HubConnectionBuilder('http://localhost:53766')
-                                        .withUrl('/chat')
+                                        .withUrl('/chat', { accessTokenFactory: () => "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1ZTkzNzc5NzY1ZGY1MDgwMTIzNzNkM2ExNjVkNjEyIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NjI5MTUyOTEsImV4cCI6MTU2MjkxODg5MSwiaXNzIjoiaHR0cHM6Ly9hcGkuZGV2LnZpc2lvbml6ZS5jbG91ZCIsImF1ZCI6WyJodHRwczovL2FwaS5kZXYudmlzaW9uaXplLmNsb3VkL3Jlc291cmNlcyIsImRldmljZS1hdXRoZW50aWNhdGlvbiIsIm5vdGlmaWNhdGlvbi1zZXR0aW5ncyIsInVzZXItbWFuYWdlbWVudCJdLCJjbGllbnRfaWQiOiJ3b2xwZXJ0aW5nZXIiLCJzdWIiOiI0ZDY2YmM2Yy1lNDI0LTQyYzktYmYwNy0xMThhODhhYzYzZjYiLCJhdXRoX3RpbWUiOjE1NjI4MzYzNTQsImlkcCI6ImxvY2FsIiwiVGVuYW50SWQiOiJkYXNnaXAiLCJVc2VySWQiOiIzIiwiRnVsbE5hbWUiOiJKb2huIEFyaXN0aXphYmFsIiwiSXNBY3RpdmUiOiJUcnVlIiwiUm9sZSI6WyJVc2VyIiwiQWRtaW4iXSwic2NvcGUiOlsib3BlbmlkIiwiZGV2aWNlLWF1dGhlbnRpY2F0aW9uIiwibm90aWZpY2F0aW9uLXNldHRpbmdzIiwidXNlci1tYW5hZ2VtZW50Il0sImFtciI6WyJwd2QiXX0.bvFwISVRC6iq1ejTjnUJE6RzKZODvZ4twC8FHlqQ_OusM9_LAvXqT54FNoOl_cC1v5Oqtq90bnGCf00WBVfCcJ3FMlGm_fwLk_G7v-A02PcxzNNpPMU_k1Km6h7K_s1_ZjG_bWrLbjS_2Gi1TQv-bx8nC9w0h8hcWAEjLvxMyxVYbtf7s9EXCxlAtwysFgcNxAfWu45LzV3Pup626Y8SxlnrTEBNtbz-5YJQ-kkQ4eybfUBzb3JFrTF84CFxRTYS3X23PwVc169eRRVEQ_ZLvyNeXMHscmkkd0CaECja8jdQUZqy6iEi-Mvd8rYLjrKrPI6BJA8Xw0mM_FOI8WVEvw" })
                                         .build();
             //If the connection is successful, that connection is passed to bindConnectionMessage, which adds event handlers for incoming content pushes to the client.
             bindConnectionMessage(connection);

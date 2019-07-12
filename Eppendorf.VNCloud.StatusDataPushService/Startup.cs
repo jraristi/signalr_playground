@@ -2,9 +2,11 @@
 // Copyright (c) Eppendorf AG - 2018. All rights reserved.
 // </copyright>
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Eppendorf.VNCloud.StatusDataPushService.Hubs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Primitives;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -20,6 +24,11 @@ namespace Eppendorf.VNCloud.StatusDataPushService
 {
     public class Startup
     {
+        // We use a key generated on this server during startup to secure our tokens.
+        // This means that if the app restarts, existing tokens become invalid. It also won't work
+        // when using multiple servers.
+        public static readonly SymmetricSecurityKey SecurityKey = new SymmetricSecurityKey(Guid.NewGuid().ToByteArray());
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,6 +48,21 @@ namespace Eppendorf.VNCloud.StatusDataPushService
                 });
 
             var connectionString = Configuration["SignalR.ConnectionString"];
+
+            services.AddAuthentication()
+                .AddJwtBearer(options => {
+                    options.Events = new JwtBearerEvents 
+                    {
+                        OnMessageReceived = context => 
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            if (string.IsNullOrEmpty(accessToken) == false) {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
+                });
 
             services.AddSignalR().AddAzureSignalR(connectionString);
             services.AddHealthChecks();
@@ -62,10 +86,27 @@ namespace Eppendorf.VNCloud.StatusDataPushService
                 ResponseWriter = WriteResponse
             });
 
-            var corsConfig = Configuration["CorsBuilderWithOrigins"];
-            app.UseCors(builder => builder.WithOrigins(corsConfig).AllowCredentials());
+            app.Use(
+                (context, next) =>
+                {
+                if (context.Request.Headers.TryGetValue("Authorization", out StringValues pathBase))
+                {
+                    var test = "";
+                }
+
+                if (context.Request.Headers.TryGetValue("Authorization", out StringValues proto))
+                {
+                    var test = "";
+                }
+
+                // context.Response.Headers.Add("Access-Control-Allow-Headers",new StringValues("authorization"));
+                return next();
+                });
+
+            app.UseStaticFiles();
+            app.UseMiddleware<WebSocketsMiddleware>();
+            app.UseAuthentication();
             
-            app.UseFileServer();
             app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chat");

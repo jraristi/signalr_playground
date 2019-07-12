@@ -25,3 +25,4 @@ C:\Code\status-data-push-service\Eppendorf.VNCloud.StatusDataPushService\obj\Deb
 C:\Code\status-data-push-service\Eppendorf.VNCloud.StatusDataPushService\obj\Debug\netcoreapp2.2\Eppendorf.VNCloud.StatusDataPushService.RazorTargetAssemblyInfo.cache
 C:\Code\status-data-push-service\Eppendorf.VNCloud.StatusDataPushService\obj\Debug\netcoreapp2.2\Eppendorf.VNCloud.StatusDataPushService.dll
 C:\Code\status-data-push-service\Eppendorf.VNCloud.StatusDataPushService\obj\Debug\netcoreapp2.2\Eppendorf.VNCloud.StatusDataPushService.pdb
+C:\Code\status-data-push-service\Eppendorf.VNCloud.StatusDataPushService\obj\Debug\netcoreapp2.2\Eppendorf.VNCloud.StatusDataPushService.csprojAssemblyReference.cache

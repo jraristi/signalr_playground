@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
 
 namespace Eppendorf.VNCloud.StatusDataPushService.Client
 {
@@ -18,6 +15,8 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Client
         {
             Configuration = configuration;
         }
+
+
 
         public IConfiguration Configuration { get; }
 
@@ -33,7 +32,7 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Client
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connectionString = Configuration["SignalR.ConnectionString"];
+            var connectionString = Configuration["SignalR.ConnectionString"];            
             services.AddSignalR().AddAzureSignalR(connectionString);
         }
 
@@ -51,10 +50,8 @@ namespace Eppendorf.VNCloud.StatusDataPushService.Client
                 app.UseHsts();
             }
 
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-
             app.UseFileServer();
+
             app.UseAzureSignalR(routes =>
             {
                 routes.MapHub<ChatHub>("/chat");

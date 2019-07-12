@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eppendorf.VNCloud.StatusDat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eppendorf.VNCloud.StatusDataPushService.Client", "Eppendorf.VNCloud.StatusDataPushService.Client\Eppendorf.VNCloud.StatusDataPushService.Client.csproj", "{1F8E101B-D216-476B-9CC5-EB83C5EEE977}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PusherService", "PusherService\PusherService.csproj", "{5370F807-A43F-4C10-A828-1620933DE2FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F8E101B-D216-476B-9CC5-EB83C5EEE977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5370F807-A43F-4C10-A828-1620933DE2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5370F807-A43F-4C10-A828-1620933DE2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5370F807-A43F-4C10-A828-1620933DE2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5370F807-A43F-4C10-A828-1620933DE2FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
